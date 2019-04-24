@@ -51,6 +51,7 @@ class Search extends Component {
                                     <a href={book.link}>Link</a>
                                     <p>{book.description}</p>
                                     <button onClick={API.post(book)}>Save Book</button>
+                                    <hr></hr>
                                 </div>
                             ))}
                         </div>
