@@ -14,7 +14,7 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        API.search(this.state.search)
+        API.searchBooks(this.state.search)
             .then(res => {
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
@@ -50,7 +50,7 @@ class Search extends Component {
                                     <img src={book.img}></img>
                                     <a href={book.link}>Link</a>
                                     <p>{book.description}</p>
-                                    <button onClick={API.post(book)}>Save Book</button>
+                                    <button onClick={API.saveBook(book)}>Save Book</button>
                                     <hr></hr>
                                 </div>
                             ))}
