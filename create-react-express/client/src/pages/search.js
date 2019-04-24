@@ -42,13 +42,18 @@ class Search extends Component {
                             placeholder="Enter a book"
                             id="book"
                         />
-                        <datalist id="books">
-                            {this.state.books.map(book => (
-                                <option value={book} key={book} onClick={API.post(book)}>
-                                SAVE BOOK
-                                </option>
+                        <div id="books">
+                            {this.state.results.map(book => (
+                                <div value={book} key={book}>
+                                    <h2>{book.title}</h2>
+                                    <p>Author: {book.author}</p>
+                                    <img src={book.img}></img>
+                                    <a href={book.link}>Link</a>
+                                    <p>{book.description}</p>
+                                    <button onClick={API.post(book)}>Save Book</button>
+                                </div>
                             ))}
-                        </datalist>
+                        </div>
                         <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
                             Search
                         </button>
