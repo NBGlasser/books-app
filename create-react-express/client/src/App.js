@@ -34,7 +34,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Search} />
-          <Route exact path="/books" component={Saved} />
+          <Route exact path="/saved" component={Saved} />
           <Route exact path="/search" component={Search} />
         </Switch>
       </div>
