@@ -16,10 +16,11 @@ class Search extends Component {
         event.preventDefault();
         API.searchBooks(this.state.search)
             .then(res => {
+                console.log(res.data)
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
                 }
-                this.setState({ results: res.data.message, error: "" });
+                this.setState({ results: res.data});
             })
             .catch(err => this.setState({ error: err.message }));
     };
