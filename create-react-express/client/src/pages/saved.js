@@ -37,12 +37,21 @@ class saved extends Component{
 
     render(){
         return(
-            // <Grid>
-                <div>
-                    {this.state.results}
-                
-                </div>
-            // </Grid>
+          <Grid>
+          {this.state.map(results => (
+            <div>
+              <List className="data-block"
+                title={results.title}
+                author={results.author}
+                img={results.img}
+                description={results.description}
+                link={results.link}
+              />
+              <DeleteBtn onClick={() => this.deleteBook(results._id)} />
+            </div>
+          ))}
+        </Grid>
+  
         )
 
     }
