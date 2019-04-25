@@ -27,7 +27,6 @@ class Search extends Component {
     render() {
         return (
             <div>
-                <Nav />
                 <h1>Search for a book</h1>
                 <form className="search">
                     <div className="form-group">
@@ -55,7 +54,7 @@ class Search extends Component {
                                 </div>
                             ))}
                         </div>
-                        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
+                        <button type="submit" onClick={this.handleFormSubmit} className="btn btn-success">
                             Search
                         </button>
                     </div>
