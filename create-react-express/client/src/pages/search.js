@@ -14,7 +14,7 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        API.search(this.state.search)
+        API.searchBooks(this.state.search)
             .then(res => {
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
