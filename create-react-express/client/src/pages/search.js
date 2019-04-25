@@ -30,12 +30,12 @@ class Search extends Component {
         return (
             <div>
                 <Jumbotron>
-                    <b><h1 class="text-center text-white">Search for a book</h1></b>
+                    <b><h1 className="text-center text-white"><i className="fas fa-search"></i>   Search for a book </h1></b>
                 </Jumbotron>
 
                 <form className="search container">
                     <div className="form-group mb-5">
-                        <label htmlFor="book">Book Name:</label>
+                        <b><label className="text-primary" htmlFor="book">Book Name:</label></b>
                         <input
                             value={this.state.search}
                             onChange={this.handleInputChange}
@@ -47,7 +47,7 @@ class Search extends Component {
                             id="book"
                         />
                         <button type="submit" onClick={this.handleFormSubmit} className="btn btn-primary mt-3 mb-5">
-                            Search
+                            Search 
                         </button>
                         <div id="books">
                             {this.state.results.map(book => (
@@ -56,7 +56,7 @@ class Search extends Component {
                                     <h2 className="text-center text-primary mt-2">{book.volumeInfo.title}</h2>
                                     <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
                                     <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
-                                    <p>To view a preview of the book, <a href={book.volumeInfo.previewLink}>Click Here.</a></p>
+                                    <p>To view a preview of the book, <a href={book.volumeInfo.previewLink} target="_blank">Click Here.</a></p>
                                     <p>Description: {book.volumeInfo.description}</p>
                                     <button className="btn btn-primary rounded mx-auto d-block mb-5" onClick={API.saveBook(book)}>Save Book</button>
                                     
