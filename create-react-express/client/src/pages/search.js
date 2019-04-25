@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron/"
+import { Col, Row, Container } from "../components/Grid";
 
 class Search extends Component {
     state = {
@@ -20,7 +21,7 @@ class Search extends Component {
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
                 }
-                this.setState({ results: res.data});
+                this.setState({ results: res.data.items});
             })
             .catch(err => this.setState({ error: err.message }));
     };
@@ -48,11 +49,11 @@ class Search extends Component {
                         <div id="books">
                             {this.state.results.map(book => (
                                 <div value={book} key={book}>
-                                    <h2>{book.title}</h2>
-                                    <p>Author: {book.author}</p>
-                                    <img src={book.img}></img>
-                                    <a href={book.link}>Link</a>
-                                    <p>{book.description}</p>
+                                    <h2>{book.volumeInfo.title}</h2>
+                                    <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
+                                    <img src={book.volumeInfo.img}></img>
+                                    <a href={book.volumeInfo.link}>Link</a>
+                                    <p>{book.volumeInfo.description}</p>
                                     <button onClick={API.saveBook(book)}>Save Book</button>
                                     <hr></hr>
                                 </div>

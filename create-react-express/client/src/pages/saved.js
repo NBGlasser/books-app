@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-import Grid from "../components/Grid";
+import { Col, Row, Container } from "../components/Grid";
 import List from "../components/List";
 import Nav from "../components/Nav";
 
@@ -37,7 +37,8 @@ class saved extends Component{
 
     render(){
         return(
-          <Grid>
+          <Row>
+          <Col>
           {this.state.map(results => (
             <div>
               <List className="data-block"
@@ -50,7 +51,8 @@ class saved extends Component{
               <DeleteBtn onClick={() => this.deleteBook(results._id)} />
             </div>
           ))}
-        </Grid>
+        </Col>
+        </Row>
   
         )
 
