@@ -1,10 +1,3 @@
-import React from "react";
-
-function Grid(children) {
-    return (<div>
-        {children}
-    </div>
-    )
-}
-
-export default Grid;
+export * from "./Col";
+export * from "./Container";
+export * from "./Row";
