@@ -3,6 +3,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import List from "../components/List";
+import Jumbotron from "../components/JumbotronSaved"
 import Nav from "../components/Nav";
 
 class saved extends Component{
@@ -14,7 +15,6 @@ class saved extends Component{
         description: "",
         img: "",
         link: ""
-
     }
 
     componentDidMount() {
@@ -36,10 +36,11 @@ class saved extends Component{
       };
 
     render(){
-        return(
-          <Row>
-          <Col>
-          {this.state.map(results => (
+        return(<div>
+            <Jumbotron>
+             <h1 className="text-primary">Saved Books</h1> 
+            </Jumbotron>
+          {this.state.results.map(results => (
             <div>
               <List className="data-block"
                 title={results.title}
@@ -51,8 +52,7 @@ class saved extends Component{
               <DeleteBtn onClick={() => this.deleteBook(results._id)} />
             </div>
           ))}
-        </Col>
-        </Row>
+        </div>
   
         )
 

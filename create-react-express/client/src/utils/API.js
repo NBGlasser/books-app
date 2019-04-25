@@ -7,10 +7,10 @@ export default {
         return axios.get(BASEURL + query );
     },
     getAllBooks(){
-        return axios.get("/api/books")
+        return axios.get("/api/books/saved")
     },
-    saveBook(){
-        return axios.post("/api/books")
+    saveBook(book){
+        return axios.post("/api/books/saved", book)
     },
     getBook: function (id){
         return axios.get("/api/books/:id")
