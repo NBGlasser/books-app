@@ -21,7 +21,7 @@ class Search extends Component {
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
                 }
-                this.setState({ results: res.data.items});
+                this.setState({ results: res.data.items });
             })
             .catch(err => this.setState({ error: err.message }));
     };
@@ -30,9 +30,9 @@ class Search extends Component {
         return (
             <div>
                 <Jumbotron>
-                <b><h1 class="text-center text-white">Search for a book</h1></b>
+                    <b><h1 class="text-center text-white">Search for a book</h1></b>
                 </Jumbotron>
-                
+
                 <form className="search container">
                     <div className="form-group mb-5">
                         <label htmlFor="book">Book Name:</label>
@@ -46,22 +46,24 @@ class Search extends Component {
                             placeholder="Enter a book"
                             id="book"
                         />
-                        <div id="books">
-                            {this.state.results.map(book => (
-                                <div value={book} key={book}>
-                                    <h2 className="text-center text-primary">{book.volumeInfo.title}</h2>
-                                    <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
-                                    <img src={book.volumeInfo.imageLinks.smallThumbnail ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
-                                    <p><a href={book.volumeInfo.previewLink}>Click Here </a>to view a priview of the book!</p>
-                                    <p>Description: {book.volumeInfo.description}</p>
-                                    <button className="btn btn-primary" onClick={API.saveBook(book)}>Save Book</button>
-                                    <hr></hr>
-                                </div>
-                            ))}
-                        </div>
                         <button type="submit" onClick={this.handleFormSubmit} className="btn btn-primary mt-3">
                             Search
                         </button>
+                        <div id="books">
+                            {this.state.results.map(book => (
+                                <div value={book} key={book}>
+                                    <hr></hr>
+                                    <h2 className="text-center text-primary mt-2">{book.volumeInfo.title}</h2>
+                                    <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
+                                    <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
+                                    <p>To view a preview of the book, <a href={book.volumeInfo.previewLink}>Click Here.</a></p>
+                                    <p>Description: {book.volumeInfo.description}</p>
+                                    <button className="btn btn-primary ml-5" onClick={API.saveBook(book)}>Save Book</button>
+                                    
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
                 </form>
             </div>
