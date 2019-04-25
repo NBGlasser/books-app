@@ -46,7 +46,7 @@ class Search extends Component {
                             placeholder="Enter a book"
                             id="book"
                         />
-                        <button type="submit" onClick={this.handleFormSubmit} className="btn btn-primary mt-3">
+                        <button type="submit" onClick={this.handleFormSubmit} className="btn btn-primary mt-3 mb-5">
                             Search
                         </button>
                         <div id="books">
@@ -58,7 +58,7 @@ class Search extends Component {
                                     <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
                                     <p>To view a preview of the book, <a href={book.volumeInfo.previewLink}>Click Here.</a></p>
                                     <p>Description: {book.volumeInfo.description}</p>
-                                    <button className="btn btn-primary ml-5" onClick={API.saveBook(book)}>Save Book</button>
+                                    <button className="btn btn-primary rounded mx-auto d-block mb-5" onClick={API.saveBook(book)}>Save Book</button>
                                     
                                 </div>
                             ))}
