@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
+import API from "../utils/API";
 import Grid from "../components/Grid";
 import List from "../components/List";
 import Nav from "../components/Nav";
@@ -7,7 +8,7 @@ import Nav from "../components/Nav";
 class saved extends Component{
 
     state={
-        results =[],
+        results: [],
         title: "",
         author: "",
         description: "",
@@ -21,7 +22,7 @@ class saved extends Component{
       }
     
       loadBooks = () => {
-        API.getBooks()
+        API.getAllBooks()
           .then(res =>
             this.setState({ results: res.data, title: "", author: "", description: "", img: "", link: "" })
           )
@@ -36,14 +37,12 @@ class saved extends Component{
 
     render(){
         return(
-            <Grid>
-                <Nav />
+            // <Grid> 
                 <div>
-                    {this.state.map( state.results)}
-                    <List className="data-block"></List>
+                    {this.state.results}
                 
                 </div>
-            </Grid>
+            // </Grid>
         )
 
     }
