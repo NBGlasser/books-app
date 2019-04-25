@@ -2,7 +2,7 @@ import React from "react";
 
 function Nav(){
     return(
-        <nav class="navbar navbar-expand-lg bg-dark mb-5 pt-2 pb-2">
+        <nav class="navbar navbar-expand-lg bg-dark pt-2 pb-2">
         <i class="fas fa-book fa-2x ml-2 text-primary"></i><a class="navbar-brand ml-2 mr-5 text-white">Books-App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

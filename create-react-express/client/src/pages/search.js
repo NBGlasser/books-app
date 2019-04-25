@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Nav from "../components/Nav"
+import Jumbotron from "../components/Jumbotron/"
 
 class Search extends Component {
     state = {
@@ -27,8 +27,11 @@ class Search extends Component {
     render() {
         return (
             <div>
-                <h1>Search for a book</h1>
-                <form className="search">
+                <Jumbotron>
+                <b><h1 class="text-center text-white">Search for a book</h1></b>
+                </Jumbotron>
+                
+                <form className="search container">
                     <div className="form-group">
                         <label htmlFor="book">Book Name:</label>
                         <input
@@ -54,7 +57,7 @@ class Search extends Component {
                                 </div>
                             ))}
                         </div>
-                        <button type="submit" onClick={this.handleFormSubmit} className="btn btn-success">
+                        <button type="submit" onClick={this.handleFormSubmit} className="btn btn-primary mt-3">
                             Search
                         </button>
                     </div>
