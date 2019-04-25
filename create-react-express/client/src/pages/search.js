@@ -34,7 +34,7 @@ class Search extends Component {
                 </Jumbotron>
                 
                 <form className="search container">
-                    <div className="form-group">
+                    <div className="form-group mb-5">
                         <label htmlFor="book">Book Name:</label>
                         <input
                             value={this.state.search}
@@ -49,12 +49,12 @@ class Search extends Component {
                         <div id="books">
                             {this.state.results.map(book => (
                                 <div value={book} key={book}>
-                                    <h2>{book.volumeInfo.title}</h2>
+                                    <h2 className="text-center text-primary">{book.volumeInfo.title}</h2>
                                     <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
-                                    <img src={book.volumeInfo.img}></img>
-                                    <a href={book.volumeInfo.link}>Link</a>
-                                    <p>{book.volumeInfo.description}</p>
-                                    <button onClick={API.saveBook(book)}>Save Book</button>
+                                    <img src={book.volumeInfo.imageLinks.smallThumbnail ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
+                                    <p><a href={book.volumeInfo.previewLink}>Click Here </a>to view a priview of the book!</p>
+                                    <p>Description: {book.volumeInfo.description}</p>
+                                    <button className="btn btn-primary" onClick={API.saveBook(book)}>Save Book</button>
                                     <hr></hr>
                                 </div>
                             ))}
