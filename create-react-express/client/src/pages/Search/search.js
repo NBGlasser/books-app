@@ -29,16 +29,6 @@ class Search extends Component {
     handleSaveBook = id => {
         const book = this.state.results.find(book => book.key = id );
         console.log("LOL hi", book)
-
-        // console.log({
-        //     title: book.volumeInfo.title,
-        //     author: book.volumeInfo.authors[0],
-        //     description: book.volumeInfo.description,
-        //     image: book.volumeInfo.imageLinks.smallThumbnail,
-        //     link: book.volumeInfo.previewLink,
-        // })
-
-        // event.preventDefault();
         API.saveBook({
             title: book.volumeInfo.title,
             author: book.volumeInfo.authors[0],
@@ -58,9 +48,9 @@ class Search extends Component {
                     <b><h1 className="text-center text-white"><i className="fas fa-search"></i>   Search for a book </h1></b>
                 </Jumbotron>
 
-                <div className="search container">
-                    <div className="form-group mb-5">
-                        <b><label className="text-primary" htmlFor="book">Book Name:</label></b>
+                <div className="search container pt-2 my-1">
+                    <div className="form-group mb-4">
+                        <b><label className="text-info" htmlFor="book">Book Name:</label></b>
                         <input
                             value={this.state.search}
                             onChange={this.handleInputChange}
@@ -71,28 +61,30 @@ class Search extends Component {
                             placeholder="Enter a book"
                             id="book"
                         />
-                        <button onClick={this.handleFormSubmit} className="btn btn-primary mt-3 mb-5">
+                        <button onClick={this.handleFormSubmit} className="btn btn-info mt-3 mb-2">
                             Search
                         </button>
-                        <div id="books">
+                    </div>
+                </div>
+                        <div id="books" className="container px-5">
                             {this.state.results.map(book => {
                                 keyCount++;
                                 return (<div value={book} key={keyCount}>
                                     <hr></hr>
-                                    <h2 className="text-center text-primary mt-2">{book.volumeInfo.title}</h2>
+                                    <h2 className="text-center text-info mt-2">{book.volumeInfo.title}</h2>
                                     <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
                                     <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
                                     <p>To view a preview of the book, <a href={book.volumeInfo.previewLink} target="_blank">Click Here.</a></p>
                                     <p>Description: {book.volumeInfo.description}</p>
-                                    <button className="btn btn-primary rounded mx-auto d-block mb-5" onClick={() => this.handleSaveBook(keyCount)}>Save Book</button>
+                                    <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.handleSaveBook(keyCount)}>Save Book</button>
                                     
                                 </div>)
                             })}
                         </div>
 
-                    </div>
+                    
                 </div>
-            </div>
+            
         )
     }
 }

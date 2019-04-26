@@ -6,7 +6,7 @@ import List from "../../components/List";
 import Jumbotron from "../../components/JumbotronSaved"
 import Nav from "../../components/Nav";
 
-class saved extends Component {
+class Saved extends Component {
 
   state = {
     results: [],
@@ -51,7 +51,7 @@ class saved extends Component {
               <img className="rounded mx-auto d-block" src={book.image}></img>
               <p>To view a preview of the book, <a href={book.link} target="_blank">Click Here.</a></p>
               <p>Description: {book.description}</p>
-             
+              <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.handleSaveBook(keyCount)}>Save Book</button>
             </div>
             )
           })}
@@ -62,4 +62,4 @@ class saved extends Component {
 
 };
 
-export default saved;
+export default Saved;
