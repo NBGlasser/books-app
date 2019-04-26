@@ -76,7 +76,7 @@ class Search extends Component {
                             <h2 className="text-center text-info mt-2">{book.volumeInfo.title}</h2>
                             <p className="text-center">Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
                             <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
-                            <p>To view a preview of the book, <a href={book.volumeInfo.previewLink} target="_blank">Click Here.</a></p>
+                            <p>To view a preview of the book, <a className="text-info" href={book.volumeInfo.previewLink} target="_blank">Click Here.</a></p>
                             <p>Description: {book.volumeInfo.description}</p>
                             <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.handleSaveBook(keyCount)}>Save Book</button>
 
