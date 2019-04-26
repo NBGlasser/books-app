@@ -1,11 +1,15 @@
 import React from "react";
 
-function List(children){
+function List(props){
     return (
         <ul>
-            <li>{children}</li>
+            <li>{props.title}</li>
+            <li>{props.author}</li>
+            <li>{props.image}</li>
+            <li>{props.description}</li>
+            <li>{props.link}</li>
         </ul>
     )
 }
 
-export default List
+export default List;
