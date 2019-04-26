@@ -27,7 +27,9 @@ class Saved extends Component {
   };
 
   deleteBook = id => {
-    API.deleteBook(id)
+    const book = this.state.results.find(book => book.key = id );
+    console.log(this.state.results)
+    API.deleteBook(book)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
@@ -40,7 +42,7 @@ class Saved extends Component {
         </Jumbotron>
         {console.log("results state", this.state.results)}
 
-        <div id="books">
+        <div id="books" className="container px-5">
           {this.state.results.map(book => {
             // keyCount++;
             return (
@@ -49,9 +51,9 @@ class Saved extends Component {
               <h2 className="text-center text-primary mt-2">{book.title}</h2>
               <p>Author: {book.author}</p>
               <img className="rounded mx-auto d-block" src={book.image}></img>
-              <p>To view a preview of the book, <a href={book.link} target="_blank">Click Here.</a></p>
               <p>Description: {book.description}</p>
-             
+              <div><a href={book.link} target="_blank"><button className="btn btn-info rounded mx-auto d-block mb-4">Book preview</button></a>
+              <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.deleteBook(this.state.title)}>Delete Book</button></div>
             </div>
             )
           })}
