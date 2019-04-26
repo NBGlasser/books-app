@@ -6,7 +6,7 @@ import List from "../../components/List";
 import Jumbotron from "../../components/JumbotronSaved"
 import Nav from "../../components/Nav";
 
-class saved extends Component {
+class Saved extends Component {
 
   state = {
     results: [],
@@ -62,4 +62,4 @@ class saved extends Component {
 
 };
 
-export default saved;
+export default Saved;
