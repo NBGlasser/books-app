@@ -1,0 +1,7 @@
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+.bookButton {
+    margin: 5px;
+}

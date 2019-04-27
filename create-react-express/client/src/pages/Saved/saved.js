@@ -26,10 +26,13 @@ class Saved extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    const book = this.state.results.find(book => book.key = id );
-    console.log(this.state.results)
-    API.deleteBook(book)
+  deleteBook = bookTitle => {
+    const book = this.state.results.find(book => book.title = bookTitle );
+    // console.log(this.state.results)
+    // console.log(book)
+    console.log(book.title)
+    console.log(book._id)
+    API.deleteBook(book.title)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
@@ -53,7 +56,7 @@ class Saved extends Component {
               <img className="rounded mx-auto d-block" src={book.image}></img>
               <p>Description: {book.description}</p>
               <div><a href={book.link} target="_blank"><button className="btn btn-info rounded mx-auto d-block mb-4">Book preview</button></a>
-              <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.deleteBook(this.state.title)}>Delete Book</button></div>
+              <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.deleteBook(book.title)}>Delete Book</button></div>
             </div>
             )
           })}

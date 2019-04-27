@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import Jumbotron from "../../components/Jumbotron"
 import { Col, Row, Container } from "../../components/Grid";
+import { Redirect } from "react-router"
+import "./style.css";
 
 class Search extends Component {
     state = {
@@ -17,7 +19,6 @@ class Search extends Component {
         event.preventDefault();
         API.searchBooks(this.state.search)
             .then(res => {
-                console.log(res.data)
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
                 }
@@ -27,8 +28,7 @@ class Search extends Component {
     };
 
     handleSaveBook = id => {
-        const book = this.state.results.find(book => book.key = id );
-        console.log("LOL hi", book)
+        const book = this.state.results.find(book => book.key = id);
         API.saveBook({
             title: book.volumeInfo.title,
             author: book.volumeInfo.authors[0],
@@ -36,7 +36,10 @@ class Search extends Component {
             image: book.volumeInfo.imageLinks.smallThumbnail,
             link: book.volumeInfo.previewLink,
         })
-
+            .then(() => {
+                return (<Redirect to="/Saved" />
+                )
+            })
     }
 
     render() {
@@ -66,25 +69,29 @@ class Search extends Component {
                         </button>
                     </div>
                 </div>
-                        <div id="books" className="container px-5">
-                            {this.state.results.map(book => {
-                                keyCount++;
-                                return (<div value={book} key={keyCount}>
-                                    <hr></hr>
-                                    <h2 className="text-center text-info mt-2">{book.volumeInfo.title}</h2>
-                                    <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
-                                    <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
-                                    <p>Description: {book.volumeInfo.description}</p>
-                                    <div><a href={book.volumeInfo.previewLink} target="_blank"><button className="btn btn-info rounded mx-auto d-block mb-4">Book preview</button></a>
-                                    <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.handleSaveBook(keyCount)}>Save Book</button></div>
-                                    
-                                </div>)
-                            })}
-                        </div>
+                <div id="books" className="container px-5">
+                    {this.state.results.map(book => {
+                        keyCount++;
+                        return (<div value={book} key={keyCount}>
+                            <hr></hr>
+                            <h2 className="text-center text-info mt-2">{book.volumeInfo.title}</h2>
+                            <p>Author: {book.volumeInfo.authors ? book.volumeInfo.authors[0] : "No author listed"}</p>
+                            <img className="rounded mx-auto d-block" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "No Image Listed"}></img>
+                            <p>Description: {book.volumeInfo.description}</p>
+                            <div className="buttonContainer">
+                                <a href={book.volumeInfo.previewLink} target="_blank">
+                                    <button className="btn btn-info rounded  mb-4 bookButton">Book preview</button>
+                                </a>
+                                <button className="btn btn-info rounded  mb-4 bookButton" onClick={() => this.handleSaveBook(keyCount)}>Save Book</button>
+                            </div>
 
-                    
+                        </div>)
+                    })}
                 </div>
-            
+
+
+            </div>
+
         )
     }
 }
