@@ -27,7 +27,7 @@ class Saved extends Component {
   };
 
   deleteBook = bookTitle => {
-    const book = this.state.results.find(book => book.title = bookTitle );
+    const book = this.state.results.find(book => book.title = bookTitle);
     // console.log(this.state.results)
     // console.log(book)
     console.log(book.title)
@@ -41,7 +41,7 @@ class Saved extends Component {
     return (
       <div>
         <Jumbotron>
-          <h1 className="text-primary">Saved Books</h1>
+          <h1 className="text-white">Saved Books</h1>
         </Jumbotron>
         {console.log("results state", this.state.results)}
 
@@ -49,15 +49,20 @@ class Saved extends Component {
           {this.state.results.map(book => {
             // keyCount++;
             return (
-            <div value={book} >
-              <hr></hr>
-              <h2 className="text-center text-primary mt-2">{book.title}</h2>
-              <p>Author: {book.author}</p>
-              <img className="rounded mx-auto d-block" src={book.image}></img>
-              <p>Description: {book.description}</p>
-              <div><a href={book.link} target="_blank"><button className="btn btn-info rounded mx-auto d-block mb-4">Book preview</button></a>
-              <button className="btn btn-info rounded mx-auto d-block mb-4" onClick={() => this.deleteBook(book.title)}>Delete Book</button></div>
-            </div>
+              <div className="pb-2 mb-2 " value={book} >
+                <hr></hr>
+                <h2 className="text-center text-info mt-2">{book.title}</h2>
+                <p className="text-center">Author: {book.author}</p>
+                <img className="rounded mx-auto d-block" src={book.image}></img>
+                <p className="pt-4">Description: {book.description}</p>
+                <div className="buttonContainer text-center">
+                  <a href={book.link} target="_blank">
+                    <button className="btn btn-info rounded mx-2 mb-4 bookButton">Book preview</button>
+                  </a>                  
+                  <button className="btn btn-info rounded mx-2 mb-4 bookButton" onClick={() => this.deleteBook(book.title)}>Delete Book</button>
+                </div>
+              </div>
+
             )
           })}
         </div>
