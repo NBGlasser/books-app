@@ -6,7 +6,7 @@ Upon receiving results the user can save the books he/she likes using mongo/mong
 
 ## Image of how it works
 
-![book-app image](https://github.com/NBGlasser/books-app/tree/master/create-react-express/client/public/images)
+![book-app image](https://github.com/NBGlasser/books-app/blob/master/create-react-express/client/public/images/books-app.gif)
 
 ## Interesting technology used
 
