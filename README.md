@@ -6,7 +6,7 @@ Upon receiving results the user can save the books he/she likes using mongo/mong
 
 ## Image of how it works
 
-![book-app image](
+![book-app image](https://github.com/NBGlasser/books-app/tree/master/create-react-express/client/public/images)
 
 ## Interesting technology used
 
@@ -14,4 +14,4 @@ Mongo: Database that allows for complex data structures to be captured directly 
 
 ## Deployment (Heroku)
 
-Here is the link to the deployed version: 
+Here is the link to the deployed version: https://amazingbookstore.herokuapp.com/
